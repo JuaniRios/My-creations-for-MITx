@@ -1,0 +1,17 @@
+monthRate = annualInterestRate/12
+
+def findPayment():
+    basePay = 10
+    completed = False
+    while completed == False:
+        currentBalance = balance
+        for i in range(12):
+            currentBalance -= basePay
+            currentBalance += currentBalance*monthRate
+        if currentBalance <= 0:
+            completed = True
+        else:
+            basePay += 10
+    return basePay
+
+print('Lowest payment: '+ str(findPayment()))
