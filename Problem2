@@ -1,0 +1,29 @@
+bobCounter = 0
+
+b = False
+o = False
+doubleO = False
+
+
+for i in s:
+    if i == 'b' and o == False:
+        b = True
+        doubleO = False
+   
+    elif b == True and i == 'o' and doubleO == False:
+        o = True
+        doubleO = True
+        
+    
+    elif b == True and o == True and i == 'b':
+        bobCounter += 1
+        o = False
+        doubleO = False
+    
+    else:
+        b = False
+        o = False
+        doubleO = False
+    
+    
+print("Number of times 'bob' occurs is: " + str(bobCounter))
