@@ -1,0 +1,29 @@
+previousLetter = 'a'
+tempCounter = 0
+tempSubstring = ''
+
+longestCounter = 0
+longestSubstring = ''
+
+
+for i in s:
+    if i >= previousLetter:
+        tempCounter += 1
+        tempSubstring += i
+        previousLetter = i
+    
+    else :
+        if tempCounter > longestCounter:
+            longestCounter = tempCounter
+            longestSubstring = tempSubstring
+        
+        tempCounter = 1
+        tempSubstring = i
+        previousLetter = i
+
+if tempCounter > longestCounter:
+            longestCounter = tempCounter
+            longestSubstring = tempSubstring
+
+
+print('Longest substring in alphabetical order is: ' + str(longestSubstring))
