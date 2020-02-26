@@ -1,0 +1,29 @@
+monthlyInterestRate = annualInterestRate/12
+
+high = (balance*(1+monthlyInterestRate)**12)/12
+low = balance/12
+
+tolerance = 0.01
+
+
+def tryPaying(basePay):
+    remainingBalance = balance
+    for month in range(12):
+        remainingBalance -= basePay
+        remainingBalance += remainingBalance*monthlyInterestRate
+    
+    return remainingBalance
+    
+
+while True:
+    basePay = (low + high)/2
+    remainingBalance = tryPaying(basePay)
+    if abs(remainingBalance) <= tolerance:
+        break
+    else:
+        if remainingBalance > 0:
+            low = basePay
+        if remainingBalance < 0:
+            high = basePay
+
+print('Lowest Payment: ' + str(round(basePay,2)))
